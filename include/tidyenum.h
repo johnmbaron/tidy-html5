@@ -123,7 +123,7 @@ extern "C" {
 /** inline */                                      FN(TIDYCUSTOMINLINE_STRING)     \
 /** pre */                                         FN(TIDYCUSTOMPRE_STRING)        \
 
-    
+
 /** These messages are used to generate additional dialogue style output from
  ** Tidy when certain conditions exist, and provide more verbose explanations
  ** than the short report.
@@ -285,7 +285,7 @@ extern "C" {
     FN(XML_ID_SYNTAX)
 
 
-/** These are report messages added by Tidy's accessibility module. 
+/** These are report messages added by Tidy's accessibility module.
  ** Note that commented out items don't have checks for them at this time,
  ** and it was probably intended that some test would eventually be written.
  */
@@ -533,7 +533,7 @@ extern "C" {
 
 /** @addtogroup public_enumerations
  ** @{ */
-    
+
 /** @name Configuration Options Enumerations
  **
  ** These enumerators are used to define available configuration options and
@@ -557,7 +557,7 @@ extern "C" {
 typedef enum
 {
     TidyUnknownOption = 0,       /**< Unknown option! */
-    
+
     TidyAccessibilityCheckLevel, /**< Accessibility check level */
     TidyAltText,                 /**< Default text for alt attribute */
     TidyAnchorAsName,            /**< Define anchors as name attributes */
@@ -734,7 +734,7 @@ typedef enum
 } TidyUseCustomTagsState;
 
 
-/** TidyNewline option values to control output line endings. 
+/** TidyNewline option values to control output line endings.
  ** @remark This enum's starting value is guaranteed to remain stable.
  */
 typedef enum
@@ -744,7 +744,7 @@ typedef enum
     TidyCR          /**< Use Macintosh style: CR */
 } TidyLineEnding;
 
-    
+
 /** TidyEncodingOptions option values specify the input and/or output encoding.
  ** @remark This enum's starting value is guaranteed to remain stable.
  */
@@ -1155,6 +1155,7 @@ typedef enum
   TidyAttr_TITLE,                  /**< TITLE= */
   TidyAttr_TOPMARGIN,              /**< TOPMARGIN= */
   TidyAttr_TRANSLATE,              /**< TRANSLATE= */
+  TidyAttr_TRANSLATE_KEY,          /**< TRANSLATE_KEY= */
   TidyAttr_TYPE,                   /**< TYPE= */
   TidyAttr_USEMAP,                 /**< USEMAP= */
   TidyAttr_VALIGN,                 /**< VALIGN= */
@@ -1168,7 +1169,7 @@ typedef enum
   TidyAttr_XML_LANG,               /**< XML_LANG= */
   TidyAttr_XML_SPACE,              /**< XML_SPACE= */
   TidyAttr_XMLNS,                  /**< XMLNS= */
-     
+
   TidyAttr_EVENT,                  /**< EVENT= */
   TidyAttr_METHODS,                /**< METHODS= */
   TidyAttr_N,                      /**< N= */
@@ -1335,17 +1336,17 @@ typedef enum
   TidyAttr_RESOURCE,               /**< RESOURCE= */
   TidyAttr_TYPEOF,                 /**< TYPEOF= */
   TidyAttr_VOCAB,                  /**< VOCAB= */
-   
+
   TidyAttr_INTEGRITY,              /**< INTEGRITY= */
-   
+
   TidyAttr_AS,                     /**< AS= */
-   
+
   TidyAttr_XMLNSXLINK,             /**< svg xmls:xlink="url" */
-   
+
   N_TIDY_ATTRIBS                   /**< Must be last */
 } TidyAttrId;
 
-    
+
 /** @}
  ** @name I/O and Message Handling Interface
  **
@@ -1377,7 +1378,7 @@ typedef enum
     TidyDialogueDoc = TidyDialogueFootnote, /**< Dialogue: Deprecated (renamed) */
 } TidyReportLevel;
 
-    
+
 /** Indicates the data type of a format string parameter used when Tidy
  ** emits reports and dialogue as part of the messaging callback functions.
  ** See `messageobj.h` for more information on this API.
@@ -1395,12 +1396,12 @@ typedef enum
 /** @} */
 /** @} end group public_enumerations*/
 
-    
+
 /* MARK: - Public Enumerations (con't) */
 /** @addtogroup public_enumerations
  ** @{ */
 
-/** @name Messages 
+/** @name Messages
  ** @{ */
 
 /** The enumeration contains a list of every possible string that Tidy and the
@@ -1445,4 +1446,3 @@ typedef enum
 }  /* extern "C" */
 #endif
 #endif /* __TIDYENUM_H__ */
-
