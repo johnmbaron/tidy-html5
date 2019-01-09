@@ -249,6 +249,7 @@ static const Attribute attribute_defs [] =
   { TidyAttr_TARGET,                  "target",                  CH_TARGET    }, /* names a frame/window */
   { TidyAttr_TEXT,                    "text",                    CH_COLOR     }, /* BODY */
   { TidyAttr_TITLE,                   "title",                   CH_PCDATA    }, /* text tool tip */
+  { TidyAttr_TOOLTIP_KEY,             "tooltip-key",             CH_PCDATA    }, /* PELCO key for translations */
   { TidyAttr_TOPMARGIN,               "topmargin",               CH_NUMBER    }, /* used on BODY */
   { TidyAttr_TRANSLATE,               "translate",               CH_BOOL      }, /* HTML5 global attribute */
   { TidyAttr_TRANSLATE_KEY,           "translate-key",           CH_PCDATA    }, /* PELCO key for translations */

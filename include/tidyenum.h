@@ -1153,6 +1153,7 @@ typedef enum
   TidyAttr_TARGET,                 /**< TARGET= */
   TidyAttr_TEXT,                   /**< TEXT= */
   TidyAttr_TITLE,                  /**< TITLE= */
+  TidyAttr_TOOLTIP_KEY,            /**< TOOLTIP_KEY= */
   TidyAttr_TOPMARGIN,              /**< TOPMARGIN= */
   TidyAttr_TRANSLATE,              /**< TRANSLATE= */
   TidyAttr_TRANSLATE_KEY,          /**< TRANSLATE_KEY= */

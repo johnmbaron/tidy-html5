@@ -159,11 +159,11 @@ static CheckAttribs CheckHTML;
 #define VERS_ELEM_VIDEO      (xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|HT50|XH50)
 #define VERS_ELEM_WBR        (xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|HT50|XH50)
 
-/*\ 
+/*\
  * Issue #167 & #169 & #232
  * Tidy defaults to HTML5 mode
  * but allow this table to be ADJUSTED if NOT HTML5
- * was static const Dict tag_defs[] = 
+ * was static const Dict tag_defs[] =
 \*/
 static Dict tag_defs[] =
 {
@@ -572,7 +572,7 @@ Bool TY_(FindTag)( TidyDocImpl* doc, Node *node )
         node->tag = np;
         return yes;
     }
-    
+
     /* Add autonomous custom tag. This can be done in both HTML5 mode and
        earlier, although if it's earlier we will complain about it elsewhere. */
     if ( TY_(nodeIsAutonomousCustomTag)( doc, node) )
@@ -582,13 +582,13 @@ Bool TY_(FindTag)( TidyDocImpl* doc, Node *node )
         TY_(DeclareUserTag)( doc, opt, node->element );
         node->tag = tagsLookup(doc, &doc->tags, node->element);
 
-        /* Output a message the first time we encounter an autonomous custom 
+        /* Output a message the first time we encounter an autonomous custom
            tag. This applies despite the HTML5 mode. */
         TY_(Report)(doc, node, node, CUSTOM_TAG_DETECTED);
 
         return yes;
     }
-    
+
     return no;
 }
 
@@ -763,14 +763,14 @@ void TY_(FreeDeclaredTags)( TidyDocImpl* doc, UserTagType tagType )
  * If the <!DOCTYPE ...> is found to NOT be HTML5,
  * then adjust tags to HTML4 mode
  *
- * NOTE: For each change added to here, there must 
+ * NOTE: For each change added to here, there must
  * be a RESET added in TY_(ResetTags) below!
 \*/
 void TY_(AdjustTags)( TidyDocImpl *doc )
 {
     Dict *np = (Dict *)TY_(LookupTagDef)( TidyTag_A );
     TidyTagImpl* tags = &doc->tags;
-    if (np) 
+    if (np)
     {
         np->parser = TY_(ParseInline);
         np->model  = CM_INLINE;
@@ -830,7 +830,7 @@ void TY_(ResetTags)( TidyDocImpl *doc )
 {
     Dict *np = (Dict *)TY_(LookupTagDef)( TidyTag_A );
     TidyTagImpl* tags = &doc->tags;
-    if (np) 
+    if (np)
     {
         np->parser = TY_(ParseBlock);
         np->model  = (CM_INLINE|CM_BLOCK|CM_MIXED);
@@ -890,7 +890,7 @@ void TY_(CheckAttributes)( TidyDocImpl* doc, Node *node )
 
 void CheckIMG( TidyDocImpl* doc, Node *node )
 {
-    Bool HasAlt = TY_(AttrGetById)(node, TidyAttr_ALT) != NULL;
+    //Bool HasAlt = TY_(AttrGetById)(node, TidyAttr_ALT) != NULL;
     Bool HasSrc = TY_(AttrGetById)(node, TidyAttr_SRC) != NULL;
     Bool HasUseMap = TY_(AttrGetById)(node, TidyAttr_USEMAP) != NULL;
     Bool HasIsMap = TY_(AttrGetById)(node, TidyAttr_ISMAP) != NULL;
@@ -898,6 +898,7 @@ void CheckIMG( TidyDocImpl* doc, Node *node )
 
     TY_(CheckAttributes)(doc, node);
 
+    /*
     if ( !HasAlt )
     {
         ctmbstr alttext = cfgStr(doc, TidyAltText);
@@ -912,6 +913,7 @@ void CheckIMG( TidyDocImpl* doc, Node *node )
             TY_(ReportAttrError)( doc, node, attval, INSERTING_AUTO_ATTRIBUTE);
         }
     }
+    */
 
     if ( !HasSrc && !HasDataFld )
         TY_(ReportMissingAttr)( doc, node, "src" );
@@ -981,7 +983,7 @@ void CheckTABLE( TidyDocImpl* doc, Node *node )
     TY_(CheckAttributes)(doc, node);
 
     /* Issue #210 - a missing summary attribute is bad accessibility, no matter
-       what HTML version is involved; a document without is valid 
+       what HTML version is involved; a document without is valid
        EXCEPT for HTML5, when to have a summary is wrong */
     if (cfg(doc, TidyAccessibilityCheckLevel) == 0)
     {
@@ -989,8 +991,8 @@ void CheckTABLE( TidyDocImpl* doc, Node *node )
         {
             /* #210 - has summary, and is HTML5, then report obsolete */
             TY_(Report)(doc, node, node, BAD_SUMMARY_HTML5);
-        } 
-        else if (!HasSummary && !isHTML5) 
+        }
+        else if (!HasSummary && !isHTML5)
         {
             /* #210 - No summary, and NOT HTML5, then report as before */
             doc->badAccess |= BA_MISSING_SUMMARY;
